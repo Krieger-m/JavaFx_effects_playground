@@ -8,55 +8,16 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
+import com.krieger.smallexercise.model.*;
 
 public class Controller {
 
-        // Define the LinearGradient once
-    LinearGradient linearGradient1 = new LinearGradient(
-            1, 1, // startX, startY (relative to object bounds)
-            1, 1, // endX, endY (relative to object bounds)
-            true, // proportional
-            null, // cycleMethod (default: NO_CYCLE)
-            new Stop(0.0, new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0)),
-            new Stop(0.35570469798657717, new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0)),
-            new Stop(1.0, new Color(0.8932098746299744, 1.0, 0.19907407462596893, 1.0))
-    );
-
-    LinearGradient linearGradient2 = new LinearGradient(
-            1, 1, // startX, startY (relative to object bounds)
-            0, 0, // endX, endY (relative to object bounds)
-            true, // proportional
-            null, // cycleMethod (default: NO_CYCLE)
-            new Stop(0.0, new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0)),
-            new Stop(0.35570469798657717, new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0)),
-            new Stop(1.0, new Color(0.8932098746299744, 1.0, 0.19907407462596893, 1.0))
-    );
-    Color c1 = new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0);
-    Stop s1 = new Stop(0.0,c1);
-
-    Color c2 = new Color(0.5799220204353333, 0.7561728358268738, 0.9210526347160339, 1.0);
-    Stop s2 = new Stop(0.35570469798657717,c2);
-
-    Color c3 = new Color(0.8932098746299744, 1.0, 0.19907407462596893, 1.0);
-    Stop s3 = new Stop( 1.0, c3);
 
 
 
 
-    LinearGradient standardGradient = new LinearGradient(
-            0, 0, // startX, startY (relative to object bounds)
-            1, 1, // endX, endY (relative to object bounds)
-            true, // proportional
-            null, // cycleMethod (default: NO_CYCLE)
 
-            s1,
-            s2,
-            s3
-    );
 
 
     @FXML
@@ -102,10 +63,10 @@ public class Controller {
             if (n instanceof Rectangle) {
                 Rectangle rect = (Rectangle) n;
                 rect.setOnMouseEntered((e) -> {
-                    rect.setFill(linearGradient2);
+                    rect.setFill(Model.gradientList.get("lGradient-test"));
                 });
                 rect.setOnMouseExited((e) -> {
-                    rect.setFill(linearGradient1);
+                    rect.setFill(Model.gradientList.get("defaultGradient"));
                 });
             }
         }
@@ -118,7 +79,7 @@ public class Controller {
             for(Node n : grid_pane.getChildren()) {
                 if (n instanceof Rectangle) {
                     Rectangle rect = (Rectangle) n;
-                    rect.setFill(standardGradient);
+                    rect.setFill(Model.gradientList.get("defaultGradient"));
                 }
             }
         });
@@ -132,7 +93,7 @@ public class Controller {
             for(Node n : grid_pane.getChildren()) {
                 if (n instanceof Rectangle) {
                     Rectangle rect = (Rectangle) n;
-                    rect.setFill(standardGradient);
+                    rect.setFill(Model.gradientList.get("defaultGradient"));
                 }
             }
         });
